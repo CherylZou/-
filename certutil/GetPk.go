@@ -1,6 +1,6 @@
 //证书生成
 
-package test
+package certutil
 
 import (
 	"crypto/ecdsa"

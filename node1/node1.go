@@ -35,7 +35,7 @@ import (
 	ma "github.com/multiformats/go-multiaddr"
 	pb "github.com/wasmerio/go-ext-wasm/nodeutil/pb"
 
-	"github.com/wasmerio/go-ext-wasm/test"
+	"github.com/wasmerio/go-ext-wasm/certutil"
 	gologging "github.com/whyrusleeping/go-logging"
 )
 import wasm "github.com/wasmerio/go-ext-wasm/wasmer"
@@ -118,8 +118,8 @@ func getValuefromNode(context unsafe.Pointer, nodeid int32, fruitid int32) int32
 	}
 	req.MessageData.Sign = signature
 
-	privateKey := test.GenPrivateKey() // CA's privateKey
-	publicKey := &privateKey.PublicKey // CA's publicKey
+	privateKey := certutil.GenPrivateKey() // CA's privateKey
+	publicKey := &privateKey.PublicKey     // CA's publicKey
 
 	// save CA's privateKey and publickey's parameters(ps: big.int to string)
 	x := publicKey.X.String() // x and y will transfer to peers first
@@ -127,12 +127,12 @@ func getValuefromNode(context unsafe.Pointer, nodeid int32, fruitid int32) int32
 	d := privateKey.D.String()
 
 	// certs for 3 peers(ps: able to transfer in type []byte)
-	cert2byte1, _ := test.File2Bytes("/home/lirunnan/version-3.0/go-ext-wasm-master3.0/test/cert1/cert.pem")
+	cert2byte1, _ := certutil.File2Bytes("/home/lirunnan/version-3.0/go-ext-wasm-master3.0/test/cert1/cert.pem")
 	//cert2byte2, _ := test.File2Bytes("/home/lirunnan/version-3.0/go-ext-wasm-master3.0/test/cert2/cert.pem")
 	//cert2byte3, _ := test.File2Bytes("/home/lirunnan/version-3.0/go-ext-wasm-master3.0/test/cert3/cert.pem")
 
 	// signatures for 3 peers(Unable to tranfer in type *big.Int, we need to change the type for r, s)
-	r1, s1, _ := test.GetCASignature(cert2byte1, d)
+	r1, s1, _ := certutil.GetCASignature(cert2byte1, d)
 	//r2, s2, _ := test.GetCASignature(cert2byte2, d)
 	//r3, s3, _ := test.GetCASignature(cert2byte3, d)
 

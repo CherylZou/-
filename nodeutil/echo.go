@@ -14,7 +14,7 @@ import (
 
 	"github.com/google/uuid"
 	pb "github.com/wasmerio/go-ext-wasm/nodeutil/pb"
-	"github.com/wasmerio/go-ext-wasm/test"
+	"github.com/wasmerio/go-ext-wasm/certutil"
 )
 
 // pattern: /protocol-name/request-or-response-message/version
@@ -89,7 +89,7 @@ func (e *EchoProtocol) onEchoCert(s network.Stream) {
 	}
 	//log.Print(ss)
 
-	flag := test.VerifySignature(rr, ss, data.Cert, data.R, data.S)
+	flag := certutil.VerifySignature(rr, ss, data.Cert, data.R, data.S)
 	log.Print(flag)
 	e.CertCh <- flag
 	if flag == true {
