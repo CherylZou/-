@@ -2,32 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77de9231-0091-46de-ba64-a81445a3209c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZHIXING/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/ZHIXING/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cert.pem" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/key.pem" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node1/node1.go" beforeDir="false" afterPath="$PROJECT_DIR$/node1/node1.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nodeutil/echo.go" beforeDir="false" afterPath="$PROJECT_DIR$/nodeutil/echo.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/FileTobyte.go" beforeDir="false" afterPath="$PROJECT_DIR$/certutil/FileTobyte.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/GetCASignature.go" beforeDir="false" afterPath="$PROJECT_DIR$/certutil/GetCASignature.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/GetHashValue.go" beforeDir="false" afterPath="$PROJECT_DIR$/certutil/GetHashValue.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/GetPk.go" beforeDir="false" afterPath="$PROJECT_DIR$/certutil/GetPk.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/VerifySignature.go" beforeDir="false" afterPath="$PROJECT_DIR$/certutil/VerifySignature.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/cert1/cert.pem" beforeDir="false" afterPath="$PROJECT_DIR$/certutil/cert1/cert.pem" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/cert1/key.pem" beforeDir="false" afterPath="$PROJECT_DIR$/certutil/cert1/key.pem" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/cert2/cert.pem" beforeDir="false" afterPath="$PROJECT_DIR$/certutil/cert2/cert.pem" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/cert2/key.pem" beforeDir="false" afterPath="$PROJECT_DIR$/certutil/cert2/key.pem" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/cert3/cert.pem" beforeDir="false" afterPath="$PROJECT_DIR$/certutil/cert3/cert.pem" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/cert3/key.pem" beforeDir="false" afterPath="$PROJECT_DIR$/certutil/cert3/key.pem" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/fabric-ca-load-tester/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/certutil/fabric-ca-load-tester/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/fabric-ca-load-tester/launchServer.sh" beforeDir="false" afterPath="$PROJECT_DIR$/certutil/fabric-ca-load-tester/launchServer.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/fabric-ca-load-tester/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/certutil/fabric-ca-load-tester/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/fabric-ca-load-tester/runLoad.sh" beforeDir="false" afterPath="$PROJECT_DIR$/certutil/fabric-ca-load-tester/runLoad.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/fabric-ca-load-tester/testClient.go" beforeDir="false" afterPath="$PROJECT_DIR$/certutil/fabric-ca-load-tester/testClient.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/fabric-ca-load-tester/testConfig.yml" beforeDir="false" afterPath="$PROJECT_DIR$/certutil/fabric-ca-load-tester/testConfig.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/integration/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/certutil/integration/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/integration/default/default_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/certutil/integration/default/default_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/integration/healthcheck/healthcheck_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/certutil/integration/healthcheck/healthcheck_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node2/node2.go" beforeDir="false" afterPath="$PROJECT_DIR$/node2/node2.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,12 +50,13 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="configurable.Global.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Module.GOPATH.is.expanded" value="false" />
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="go.vgo" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -98,7 +79,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Build.go build node1.go (1)">
+  <component name="RunManager" selected="Go Build.go build node2.go (1)">
     <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="go-ext-wasm-master" />
       <working_directory value="$PROJECT_DIR$" />
@@ -146,8 +127,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build node1.go (1)" />
         <item itemvalue="Go Build.go build node2.go (1)" />
+        <item itemvalue="Go Build.go build node1.go (1)" />
         <item itemvalue="Go Build.go build main.go" />
         <item itemvalue="Go Build.go build node1.go" />
         <item itemvalue="Go Build.go build node2.go" />
@@ -162,7 +143,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

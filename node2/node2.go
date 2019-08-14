@@ -23,10 +23,10 @@ import (
 	//"github.com/libp2p/go-libp2p-core/peerstore"
 
 	golog "github.com/ipfs/go-log"
-	//	quic "github.com/libp2p/go-libp2p-quic-transport"
 	ma "github.com/multiformats/go-multiaddr"
 	gologging "github.com/whyrusleeping/go-logging"
 
+	quic "github.com/libp2p/go-libp2p-quic-transport"
 	"github.com/wasmerio/go-ext-wasm/nodeutil"
 )
 
@@ -51,20 +51,20 @@ func makeNode(ipaddress string, port int, randseed int64, resCh chan int, certCh
 		return nil
 	}
 
-	//	//create transport
-	//	trans, err := quic.NewTransport(priv)
-	//	if err != nil {
-	//		log.Println(err)
-	//		return nil
-	//	}
+	//create transport
+	trans, err := quic.NewTransport(priv)
+	if err != nil {
+		log.Println(err)
+		return nil
+	}
 
 	//create host
-	listenAddr, _ := ma.NewMultiaddr(fmt.Sprintf("/ip4/%s/tcp/%d", ipaddress, port))
+	listenAddr, _ := ma.NewMultiaddr(fmt.Sprintf("/ip4/%s/udp/%d/quic", ipaddress, port))
 	host, err := libp2p.New(
 		context.Background(),
 		libp2p.ListenAddrs(listenAddr),
 		libp2p.Identity(priv),
-		//		libp2p.Transport(trans),
+		libp2p.Transport(trans),
 	)
 	if err != nil {
 		log.Println(err)

@@ -31,7 +31,7 @@ import (
 	"github.com/libp2p/go-libp2p-core/peerstore"
 
 	golog "github.com/ipfs/go-log"
-	//	quic "github.com/libp2p/go-libp2p-quic-transport"
+	quic "github.com/libp2p/go-libp2p-quic-transport"
 	ma "github.com/multiformats/go-multiaddr"
 	pb "github.com/wasmerio/go-ext-wasm/nodeutil/pb"
 
@@ -53,18 +53,10 @@ type Message struct {
 //	s *big.Int
 //}
 
+var ha *nodeutil.Node
+
 //export getValuefromNode
 func getValuefromNode(context unsafe.Pointer, nodeid int32, fruitid int32) int32 {
-	golog.SetAllLoggers(gologging.INFO) //change to debug for extra info
-	ipaddress := "127.0.0.1"
-	listenPort := 10003 //!!!!!!!!!!!!!!
-	var seed int64
-	seed = 2 //!!!!!!!!!
-
-	resCh := make(chan int, 2)
-	certCh := make(chan bool, 2)
-	//make a host
-	ha := makeNode(ipaddress, listenPort, seed, resCh, certCh)
 
 	//set a stream handler on host A
 	// /echo/1.0.0 is a user-defined protocol name
@@ -166,7 +158,7 @@ func getValuefromNode(context unsafe.Pointer, nodeid int32, fruitid int32) int32
 	ok := false
 	var result int
 	for ok == false {
-		result, ok = <-resCh
+		result, ok = <-ha.ResCh
 	}
 	return int32(result)
 }
@@ -256,20 +248,20 @@ func makeNode(ipaddress string, port int, randseed int64, resCh chan int, certCh
 		return nil
 	}
 
-	//	//create transport
-	//	trans, err := quic.NewTransport(priv)
-	//	if err != nil {
-	//		log.Println(err)
-	//		return nil
-	//	}
+	//create transport
+	trans, err := quic.NewTransport(priv)
+	if err != nil {
+		log.Println(err)
+		return nil
+	}
 
 	//create host
-	listenAddr, _ := ma.NewMultiaddr(fmt.Sprintf("/ip4/%s/tcp/%d", ipaddress, port))
+	listenAddr, _ := ma.NewMultiaddr(fmt.Sprintf("/ip4/%s/udp/%d/quic", ipaddress, port))
 	host, err := libp2p.New(
 		context.Background(),
 		libp2p.ListenAddrs(listenAddr),
 		libp2p.Identity(priv),
-		//		libp2p.Transport(trans),
+		libp2p.Transport(trans),
 	)
 	if err != nil {
 		log.Println(err)
@@ -429,6 +421,17 @@ func main() {
 		log.Fatal("Please provide a port to bind on with -l")
 	}*/
 
+	golog.SetAllLoggers(gologging.INFO) //change to debug for extra info
+	ipaddress := "127.0.0.1"
+	listenPort := 10003 //!!!!!!!!!!!!!!
+	var seed int64
+	seed = 2 //!!!!!!!!!
+
+	resCh := make(chan int, 2)
+	certCh := make(chan bool, 2)
+	//make a host
+	ha = makeNode(ipaddress, listenPort, seed, resCh, certCh)
+
 	imports, err := wasm.NewImports().Append("getValuefromNode1", getValuefromNode1, C.getValuefromNode1)
 
 	if err != nil {
@@ -439,7 +442,7 @@ func main() {
 
 	imports.Append("getValuefromNode", getValuefromNode, C.getValuefromNode)
 
-	bytes, err := wasm.ReadBytes("/home/lirunnan/version-3.0/go-ext-wasm-master3.0/node1/addsum2.wasm")
+	bytes, err := wasm.ReadBytes("/home/lirunnan/version-3.0/webassembly-libp2p-fabricCA/node1/addsum2.wasm")
 	if err != nil {
 		panic(err)
 	}
